@@ -13,22 +13,23 @@
         <% if (locals.username) { %>
             
             <div class="user">
-                <div class="photo"></div>
-                <%= locals.username %>
+                <p>Hi , <%= locals.username %></p>
+                
                 <a href="http://localhost:8002/logout">LogOut</a>
             </div>
         <% } %>
         
-
-        <h1 >URL Shortner</h1>
+        <div class="heading-div">
+        <h1 class="main-heading" >URL Shortner</h1>
         <form  class="heading" action="/mainpage" method="post">
            
             <input type="text" placeholder="Enter Your URL here" name="url">
             <button type="submit">Generate</button>
         </form>
+        </div>
     
-
-        <h1>Shortned-Redirected URL Analysis</h1>
+       <div class="output-main">
+        <h2 class="sub-heading">Shortned-Redirected URL Analysis</h2>
        <div class="output">
     
 
@@ -56,5 +57,7 @@
        
     </div>
 </div>
+
+
 </body>
 </html>

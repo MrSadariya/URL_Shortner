@@ -112,7 +112,7 @@ app.post("/login",async (req,res)=>{
     .then((user)=>{
         if(user){
             let token=setUser(user);
-            res.cookie("ID",token,{maxAge:600000});//setting 10 minutes as maxAge(User will get logged out in 10 minutes)
+            res.cookie("ID",token,{maxAge:600000});
             return res.redirect("/mainpage");   
         }else{
             return res.redirect("/login");
