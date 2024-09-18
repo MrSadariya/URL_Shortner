@@ -69,12 +69,12 @@ app.get("/",(req,res)=>{
     // if (req.url.endsWith('.css')) {
     //     res.setHeader('Content-Type', 'text/css');
     // }
-    return res.render("../views/singup");
+    return res.render("singup");
     
 })
 
 app.get("/login",(req,res)=>{
-    return res.render("../views/login");
+    return res.render("login");
     
 })
 
@@ -82,7 +82,7 @@ app.get("/login",(req,res)=>{
 app.post("/",(req,res)=>{
    let body=req.body;
    if(!body.FullName|| !body.Email||!body.Password){
-    res.render("../views/singup");
+    res.render("singup");
     
    }
 
@@ -133,7 +133,7 @@ app.get("/mainpage",async(req,res)=>{
         }else{
             let user=await User.findOne({Email:decoded.Email});
             let databyuser=await URLData.find({createdBy:decoded.Email});
-            return res.render("../views/mainpage",{urls:databyuser,username:user.FullName});
+            return res.render("mainpage",{urls:databyuser,username:user.FullName});
             // return res.render("mainpage",{urls:databyuser,username:user.FullName});
         }
     })
