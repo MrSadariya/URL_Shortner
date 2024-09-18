@@ -11,7 +11,6 @@ const jwt=require("jsonwebtoken");
 const { decode } = require("punycode");
 const secret=process.env.SECRET;
 
-
 app.set('view engine','ejs');
 app.set('views',path.resolve("./views"));
 
