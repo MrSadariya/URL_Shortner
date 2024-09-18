@@ -14,8 +14,12 @@
             
             <div class="user">
                 <p>Hi , <%= locals.username %></p>
+
+                <form action="/logout" method="get">
+                    <button class="logout-btn" type="submit">Logout</button>
+                </form>
                 
-                <a href="http://localhost:8002/logout">LogOut</a>
+                
             </div>
         <% } %>
         

@@ -17,7 +17,7 @@ app.set('views',path.resolve("./views"));
 app.use('/public',express.static('public'));
 
 
-mongoose.connect("mongodb://127.0.0.1:27017/User-DB").
+mongoose.connect(process.env.MONGO_URL).
 then(()=>console.log("MongoDB Connected!!"))
 .catch(err=>console.log("Mongo Error:",err));
 
@@ -184,7 +184,7 @@ app.get("/URL/:id",async(req,res)=>{
             return res.json({ Error: "Page doesn't exist." });
         }
         urldata.visitHistory.push(Date.now());
-        await urldata.save(); // Save the document with updated visit history
+        await urldata.save(); 
         return res.redirect(urldata.RedirectURL);
     } catch (error) {
         console.error("Error:", error);

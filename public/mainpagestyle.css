@@ -6,7 +6,13 @@
     font-family: Outfit;
 }
 
- body{
+button{
+    border: none;
+    background-color: inherit;
+    color: inherit;
+}
+
+body{
     min-height: 100vh;
     width: 100vw;
     
@@ -38,16 +44,22 @@
     font-size: 1.3rem;
 }
 
-.user a{
+.user form{
     text-decoration: none;
     color: inherit;
-    padding: 1rem;
+    /* padding: 1rem; */
     /* background-color: #325980; */
     background-color: #202E50;
     margin-right: 2rem;
     border-radius: 0.5rem;
     font-weight: 800;
     color: #ffffff;
+}
+
+.logout-btn{
+    border-radius: 0.5rem;
+    padding: 1rem;
+    height: 100%;
 }
 
 .heading-div{
@@ -185,6 +197,7 @@
 .output table tr{
     height: 3rem;
 }
+
 
 a:hover{
     box-shadow: 0px 0px 50px 10px #202E50;
