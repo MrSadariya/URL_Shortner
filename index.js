@@ -14,7 +14,7 @@ const secret=process.env.SECRET;
 
 app.set('view engine','ejs');
 app.set('views',path.resolve("./views"));
-app.use('/public',express.static('public'));
+app.use(express.static('public'));
 
 
 mongoose.connect(process.env.MONGO_URL).
