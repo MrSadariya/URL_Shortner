@@ -73,6 +73,11 @@ app.get("/",(req,res)=>{
     
 })
 
+app.get("/login",(req,res)=>{
+    return res.render("../views/login");
+    
+})
+
 
 app.post("/",(req,res)=>{
    let body=req.body;
@@ -94,10 +99,7 @@ app.post("/",(req,res)=>{
 
 })
 
-app.get("/login",(req,res)=>{
-    return res.render("../views/login");
-    
-})
+
 
 app.post("/login",async (req,res)=>{
     let body=req.body;
