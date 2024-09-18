@@ -1,25 +1,26 @@
+require('dotenv').config();
 const express=require("express");
 const mongoose=require("mongoose");
 const {nanoid}=require("nanoid");
 const path=require("path");
 const {setUser,getUser}=require("./user_id");
 const app=express();
-const PORT=8002;
+const PORT=process.env.PORT || 8002;
 const cookieparser=require("cookie-parser");
 const jwt=require("jsonwebtoken");
 const { decode } = require("punycode");
-const secret="Parth@1234";
+const secret=process.env.SECRET;
 
-//ejs connection
+
 app.set('view engine','ejs');
 app.set('views',path.resolve("./views"));
 app.use('/public',express.static('public'));
 
-//connection
+
 mongoose.connect("mongodb://127.0.0.1:27017/User-DB").
 then(()=>console.log("MongoDB Connected!!"))
 .catch(err=>console.log("Mongo Error:",err));
-//schema
+
 const userSchema=new mongoose.Schema({
     FullName:{
         type:String,
@@ -36,7 +37,7 @@ const userSchema=new mongoose.Schema({
     }
 })
 
-//model User
+
 const User=mongoose.model('user',userSchema);
 
 
@@ -53,22 +54,19 @@ const URLschema=new mongoose.Schema({
         type:Array,
         required:true
     },
-    //email of user
+    
     createdBy:{
         type:String,
         required:true
     }
 })
-//model URL
-const URLData=mongoose.model('urls',URLschema);
 
-//middlewares
+const URLData=mongoose.model('urls',URLschema);
 
 app.use(express.urlencoded({extended:false}));
 app.use(cookieparser());
 
 
-//Default Page(Sign Up)
 app.get("/",(req,res)=>{
     if (req.url.endsWith('.css')) {
         res.setHeader('Content-Type', 'text/css');
@@ -96,7 +94,6 @@ app.post("/",(req,res)=>{
 
 })
 
-//Login Page
 app.get("/login",(req,res)=>{
     return res.render("../views/login");
 })
@@ -121,7 +118,7 @@ app.post("/login",async (req,res)=>{
     
 })
 
-//Main Page
+
 app.get("/mainpage",async(req,res)=>{
     let id=req.cookies.ID;
     if(!id){
@@ -173,7 +170,6 @@ app.post("/mainpage",(req,res)=>{
 
 })
 
-//visit History
 app.get("/URL/:id",async(req,res)=>{
     let id=req.params.id;
     // let urldata=await URLData.findOne({ShortURL:id});
